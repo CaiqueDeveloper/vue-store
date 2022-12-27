@@ -1,26 +1,34 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
+<script setup>
+import Header from '@/components/Header/AppHeader.vue'
+import Banner from '@/components/Banner/AppBanner.vue'
+import Footer from '@/components/Footer/AppFooter.vue'
+import Loading from '@/components/Utils/Loading/UtilsBaseLoading.vue'
+import SideBar from '@/components/Utils/SideBar/UtilsBaseSideBar.vue'
+import {useGetters,useStore } from 'vuex-composition-helpers';
+    
+    const store = useStore();
+    store.dispatch('products/fetchProducts')
+    store.dispatch('cart/fetchCart')
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+    let {showModal} = useGetters({showModal: 'products/getStateFetchRequest'})
+    let {showSideBarCart} = useGetters({showSideBarCart: 'utils/getStateSideBarCart'})
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<template>
+  <!-- Header -->
+  <Header />
+  <!-- Banner -->
+  <Banner />
+
+  <router-view />
+  <!-- Footer -->
+  <Footer />
+  <!-- Loading -->
+  <Loading :showLoading="showModal" />
+  <!-- Sidebar -->
+  
+  <SideBar v-if="showSideBarCart"/>
+  
+  
+</template>
