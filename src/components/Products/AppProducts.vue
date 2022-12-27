@@ -2,6 +2,8 @@
 import Product from './AppProduct.vue'
 import { useGetters } from 'vuex-composition-helpers';
 
+
+
 const { products } = useGetters({ products: 'products/getAllProducts' })    
 </script>
 <template>

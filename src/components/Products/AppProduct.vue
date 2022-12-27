@@ -10,9 +10,9 @@
 
     <a href="#" @click.prevent="getProduct" :value="props.product.id">
         <div
-            class="w-full mx-auto  max-w-sm sm:mx-6 bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 my-3 flex flex-col justify-around items-center">
+            class="min-h-[550px] w-full mx-auto  max-w-sm sm:mx-6 bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 my-3 flex flex-col justify-around items-center">
             <a href="#">
-                <img class="p-8 rounded-t-lg" width="250" :src="props.product.image" :alt="props.product.title" />
+                <img class="p-8 rounded-t-lg" width="250" height="280" :src="props.product.image" :alt="props.product.title" />
             </a>
             <div class="px-5 pb-5">
                 <a href="#">
